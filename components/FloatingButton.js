@@ -2,9 +2,9 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
 
-const FloatingButton = () => {
+const FloatingButton = ({ onPress }) => {
   return (
-    <TouchableOpacity style={styles.floatingButton}><Text style={styles.textButton}>Go to cart <Icon name="cart-outline" /></Text></TouchableOpacity>
+    <TouchableOpacity onPress={onPress} style={styles.floatingButton}><Text style={styles.textButton}>Go to cart <Icon name="cart-outline" /></Text></TouchableOpacity>
   )
 }
 

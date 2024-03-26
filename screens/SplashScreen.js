@@ -8,8 +8,11 @@ const SplashScreen = () => {
   const welcomeSection = () => {
     return (
       <>
-        <Text style={styles.buyProductsCard}>Buy products</Text>
-        <Text style={styles.shopCartTextCard}>Add to your shop cart</Text>
+        <Text style={styles.buyProductsCard}>Welcome! Here you'll find great items to shop!</Text>
+        <Text style={styles.buyProductsCard}>Buy safetaly!</Text>
+        <Text style={[styles.buyProductsCard, { alignSelf: "flex-end" }]}>All products what you want!</Text>
+
+
       </>
     )
   }
@@ -33,7 +36,7 @@ const SplashScreen = () => {
 
 const styles = StyleSheet.create({
   productsCard: {
-    backgroundColor: "#9966CC",
+    backgroundColor: "#009CCA",
     marginHorizontal: "10%",
     padding: "5%",
     borderRadius: 12
@@ -47,20 +50,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: "#000",
     padding: "3%",
-    borderRadius: 20
-  },
-  shopCartTextCard: {
-    color: "#fff",
-    fontSize: 32,
-    backgroundColor: "#CEB1FB",
-    alignSelf: "flex-end",
-    marginRight: "3%",
-    marginTop: 20,
-    color: "#000",
-    padding: "3%",
-    marginBottom: "10%",
     borderRadius: 20,
-  }
+    marginBottom: 50
+  },
+
 })
 
 export default SplashScreen

@@ -31,7 +31,7 @@ const ProductCard = ({ product, onAddItem }) => {
       {detailsSection(product)}
 
       <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity style={styles.detailsButton} onPress={() => navigate.navigate("ProductDetail", { product: product })}>
+        <TouchableOpacity style={styles.detailsButton} onPress={() => navigate.navigate("ProductDetail", { product: product, onAddItem: onAddItem })}>
           <Text style={styles.buttonText}>See details <Icon name="details" /></Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.addToCartButton} onPress={() => { onAddItem(product) }}>

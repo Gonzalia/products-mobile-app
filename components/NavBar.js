@@ -1,24 +1,35 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
-const NavBar = ({ title }) => {
-
+const NavBar = ({ title, back }) => {
+  const navigation = useNavigation()
 
   return (
     <View style={styles.navBarContainer}>
-      <Text style={styles.navBarText}>{title}</Text>
+      {back && (
+        <TouchableOpacity onPress={() => navigation.navigate("SplashScreen")}>
+          <Icon name="keyboard-backspace" color={"#fff"} style={{}} size={30} />
+        </TouchableOpacity>
+      )}
+      <Text style={styles.navBarText}>{title} </Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   navBarContainer: {
-    backgroundColor: "#6EAFE8",
-    padding: "2%"
+    backgroundColor: "#001A4D",
+    padding: "2%",
+    flexDirection: "row",
+    justifyContent: "space-between"
+
   },
   navBarText: {
     fontWeight: "700",
     alignSelf: "center",
-    fontSize: 24
+    fontSize: 24,
+    color: "#fff"
   }
 })
 
