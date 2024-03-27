@@ -33,10 +33,10 @@ const ProductDetail = () => {
     )
   }
   return (
-    <View style={{ flex: 1, backgroundColor: "#202020", marginTop: StatusBar.currentHeight }}>
+    <View style={{ flex: 1, backgroundColor: "#173B48", marginTop: StatusBar.currentHeight }}>
       <NavBar title={product.title} />
-      <Carousel style={styles.carouselStyles} showsDots={false} showsControls={false} autoplay={true} autoplayInterval={2000} loop={true} mergeStyles={true} >
-        {product.images.map(img => <Image source={{ uri: img }} style={styles.imageStyles} resizeMode="contain" />)}
+      <Carousel style={styles.carouselStyles} showsControls={false} autoplay={true} autoplayInterval={2000} loop mergeStyles={true} >
+        {product.images.map(img => <Image source={{ uri: img }} style={styles.imageStyles} resizeMode="stretch" />)}
       </Carousel>
       {detailSection()}
 
@@ -46,9 +46,12 @@ const ProductDetail = () => {
 }
 
 const styles = StyleSheet.create({
-
   imageStyles: {
-    width: "100%", height: "100%"
+    width: "100%", height: "100%",
+    borderRadius: 12,
+    flex: 1,
+    marginVertical: 10
+
   },
   carouselStyles: {
     flex: 1,

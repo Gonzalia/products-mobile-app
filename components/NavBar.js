@@ -19,7 +19,7 @@ const NavBar = ({ title, back }) => {
 
 const styles = StyleSheet.create({
   navBarContainer: {
-    backgroundColor: "#001A4D",
+    backgroundColor: "#4CC671",
     padding: "2%",
     flexDirection: "row",
     justifyContent: "space-between"

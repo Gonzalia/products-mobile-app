@@ -1,18 +1,34 @@
-import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import NavBar from "../components/NavBar"
 import { useNavigation } from "@react-navigation/native"
 
 const SplashScreen = () => {
   const navigation = useNavigation()
+  const reviewsJson = [
+    { "Marco says: ": "I recently purchased a laptop from this store and I couldn't be happier with my decision." },
+    { "Emilia says: ": "The laptop is incredibly fast and reliable, making my work tasks a breeze." },
+    { "Sarah says: ": "I absolutely love the new smartphone I bought here! It's sleek, fast, and the camera quality is superb." },
+    { "John says: ": "The customer service at this store is outstanding. They helped me find the perfect tablet within my budget." },
+  ]
 
   const welcomeSection = () => {
     return (
       <>
-        <Text style={styles.buyProductsCard}>Welcome! Here you'll find great items to shop!</Text>
-        <Text style={styles.buyProductsCard}>Buy safetaly!</Text>
-        <Text style={[styles.buyProductsCard, { alignSelf: "flex-end" }]}>All products what you want!</Text>
+        <View style={{ flexDirection: "row", marginBottom: "5%", alignSelf: "center" }}>
+          <Image source={require("../assets/logoFurniPro.png")} style={styles.iconStyle} />
 
-
+          <Text style={styles.buyProductsCard}>Kiura Products</Text>
+        </View>
+        {reviewsJson.map((review, index) => (
+          <View style={styles.reviewCard} key={index}>
+            {Object.entries(review).map(([name, text]) => (
+              <View key={name}>
+                <Text style={styles.nameStyle}>{name}</Text>
+                <Text style={styles.textStyle}>{text}</Text>
+              </View>
+            ))}
+          </View>
+        ))}
       </>
     )
   }
@@ -26,8 +42,9 @@ const SplashScreen = () => {
   }
 
   return (
-    <View style={{ backgroundColor: "#202020", flex: 1, marginTop: StatusBar.currentHeight }}>
-      <NavBar title={"Welcome"} />
+    <View style={{ backgroundColor: "#173B48", flex: 1, marginTop: StatusBar.currentHeight }}>
+      <NavBar title={"Welcome to Kiura store"} />
+
       {welcomeSection()}
       {productsNavigation()}
     </View>
@@ -35,24 +52,42 @@ const SplashScreen = () => {
 }
 
 const styles = StyleSheet.create({
+  iconStyle: {
+    height: 120,
+    width: 120,
+  },
   productsCard: {
-    backgroundColor: "#009CCA",
+    backgroundColor: "#0594A4",
     marginHorizontal: "10%",
     padding: "5%",
     borderRadius: 12
   },
+  nameStyle: {
+    fontWeight: "600",
+    fontSize: 16,
+    marginBottom: 5
+  },
+  textStyle: {
+    marginHorizontal: 20,
+    fontStyle: "italic",
+    fontSize: 15
+  },
   buyProductsCard: {
     color: "#fff",
     fontSize: 32,
-    backgroundColor: "#CEB1FB",
-    marginHorizontal: "10%",
-    alignSelf: "flex-start",
+    alignSelf: "center",
     marginTop: 20,
-    color: "#000",
-    padding: "3%",
-    borderRadius: 20,
-    marginBottom: 50
+    padding: "2%",
+    marginBottom: 15,
+    fontWeight: "500"
   },
+  reviewCard: {
+    backgroundColor: "#fff",
+    marginHorizontal: "10%",
+    padding: 5,
+    borderRadius: 12,
+    marginBottom: 20
+  }
 
 })
 

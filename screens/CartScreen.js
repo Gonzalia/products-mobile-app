@@ -4,6 +4,11 @@ import Toast from "react-native-toast-message"
 
 const CartScreen = ({ cartItems, setCartItems, isVisible, setIsVisible }) => {
 
+  const removeItem = (indexToRemove) => {
+    const updatedItems = cartItems.filter((_, index) => index !== indexToRemove);
+    setCartItems(updatedItems);
+  };
+
   const handleBuyItems = () => {
     setIsVisible(false)
     Toast.show({
@@ -27,13 +32,15 @@ const CartScreen = ({ cartItems, setCartItems, isVisible, setIsVisible }) => {
       <View style={styles.viewModal}>
         <Text style={styles.modalTitle}>You shopping cart</Text>
 
-        <ScrollView style={{ paddingVertical: 10, maxHeight: "100%" }}>
+        <ScrollView style={{ paddingVertical: 10, backgroundColor: "#fff" }}>
           {cartItems.length > 0 ? (
 
-            cartItems.map((item) => (
-              <View style={styles.itemsStyle}>
-                <Text>{item.itemName}</Text>
-                <Text>${item.itemPrice}</Text>
+            cartItems.map((item, index) => (
+              <View style={styles.itemsStyle} key={index}>
+                <Text style={styles.itemsTextStyle}>{item.itemName}</Text>
+                <Text style={styles.itemsTextStyle}>${item.itemPrice}</Text>
+                <TouchableOpacity style={styles.removeButton} onPress={() => removeItem(index)}
+                ><Text style={{ color: "#fff" }}>Remove</Text></TouchableOpacity>
               </View>
             ))
           ) : (
@@ -42,7 +49,7 @@ const CartScreen = ({ cartItems, setCartItems, isVisible, setIsVisible }) => {
         </ScrollView>
 
         {cartItems.length > 0 && (
-          <Text style={{ marginLeft: 10, marginBottom: 10 }}>Total: ${total}</Text>
+          <Text style={{ paddingLeft: 10, paddingBottom: 10, backgroundColor: "#fff" }}>Total: ${total}</Text>
 
         )}
         <View style={styles.buttons}>
@@ -50,7 +57,7 @@ const CartScreen = ({ cartItems, setCartItems, isVisible, setIsVisible }) => {
           <TouchableOpacity onPress={() => handleBuyItems()} style={styles.buyButton}><Text style={{ alignSelf: "center" }}>Buy Items</Text></TouchableOpacity>
         </View>
       </View>
-    </Modal>
+    </Modal >
   )
 }
 
@@ -60,9 +67,15 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "center",
     fontWeight: "600",
-    color: "#fff"
+    color: "#fff",
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12
   },
-  viewModal: { alignSelf: "center", backgroundColor: "#fff", width: "80%" },
+  viewModal: {
+    alignSelf: "center",
+    width: "80%",
+    height: "40%",
+  },
   buttons: {
     flexDirection: "row",
 
@@ -71,18 +84,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF5B5B",
     flex: 1,
     padding: 10,
+    borderBottomLeftRadius: 12
 
   },
   buyButton: {
-    backgroundColor: "#B2FF5B",
+    backgroundColor: "#4CC671",
     flex: 1,
-    padding: 10
+    padding: 10,
+    borderBottomRightRadius: 12
+
   },
   itemsStyle: {
     paddingHorizontal: 10,
     flexDirection: "row",
+    marginVertical: 10,
     justifyContent: "space-between",
-    marginVertical: 10
+
+  },
+  removeButton: {
+    backgroundColor: "#FF5A5A",
+    padding: 5,
+    borderRadius: 8,
+    alignSelf: "center"
+  },
+  itemsTextStyle: {
+    alignSelf: "center",
+    flex: 1,
+    textAlign: "left"
   }
 })
 

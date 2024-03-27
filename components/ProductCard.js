@@ -26,7 +26,7 @@ const ProductCard = ({ product, onAddItem }) => {
   return (
     <View style={styles.productContainer}>
       <Carousel style={styles.carouselStyles} height={300} >
-        {product.images.map(img => <Image source={{ uri: img }} style={styles.imageStyles} resizeMode="stretch" />)}
+        {product.images.map((img, index) => <Image source={{ uri: img }} key={index} style={styles.imageStyles} resizeMode="stretch" />)}
       </Carousel>
       {detailsSection(product)}
 

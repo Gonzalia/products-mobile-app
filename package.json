@@ -18,6 +18,9 @@
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-modal": "^13.0.1",
+    "react-native-picker-select": "^9.0.1",
+    "react-native-select-dropdown": "^4.0.0",
+    "react-native-svg": "^15.1.0",
     "react-native-toast-message": "^2.2.0",
     "react-native-vector-icons": "^10.0.3"
   },

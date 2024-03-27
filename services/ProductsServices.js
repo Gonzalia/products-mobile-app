@@ -5,6 +5,10 @@ const ProductsServices = {
   getAllProducts: async () => {
     const response = await axios.get(BASEURL)
     return response.data;
+  },
+  getByCategorie: async (categorie) => {
+    const response = await axios.get(`${BASEURL}/category/${categorie}`)
+    return response.data;
   }
 }
 

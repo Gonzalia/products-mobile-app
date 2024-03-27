@@ -10,10 +10,10 @@ const FloatingButton = ({ onPress }) => {
 
 const styles = StyleSheet.create({
   floatingButton: {
-    backgroundColor: "#008108",
+    backgroundColor: "#0594A4",
     position: "absolute",
     right: 10,
-    top: 60,
+    top: "20%",
     zIndex: 2,
     padding: 10,
     borderRadius: 20
