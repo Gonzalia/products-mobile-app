@@ -37,8 +37,8 @@ const CartScreen = ({ cartItems, setCartItems, isVisible, setIsVisible }) => {
 
             cartItems.map((item, index) => (
               <View style={styles.itemsStyle} key={index}>
-                <Text style={styles.itemsTextStyle}>{item.itemName}</Text>
-                <Text style={styles.itemsTextStyle}>${item.itemPrice}</Text>
+                <Text style={[styles.itemsTextStyle, { textAlign: "left" }]}>{item.itemName}</Text>
+                <Text style={[styles.itemsTextStyle, { textAlign: "center" }]}>${item.itemPrice}</Text>
                 <TouchableOpacity style={styles.removeButton} onPress={() => removeItem(index)}
                 ><Text style={{ color: "#fff" }}>Remove</Text></TouchableOpacity>
               </View>
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   itemsTextStyle: {
     alignSelf: "center",
     flex: 1,
-    textAlign: "left"
   }
 })
 

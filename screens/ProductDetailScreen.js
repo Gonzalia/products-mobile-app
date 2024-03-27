@@ -2,9 +2,14 @@ import { useRoute } from "@react-navigation/native"
 import { StatusBar, Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import NavBar from "../components/NavBar";
 import Carousel from "pinar"
+import { useCallback } from "react";
 const ProductDetail = () => {
   const route = useRoute()
   const { product, onAddItem } = route.params
+
+  const handleAddItem = useCallback(() => {
+    onAddItem(product)
+  }, [product, onAddItem])
 
   const detailSection = () => {
     return (
@@ -25,7 +30,7 @@ const ProductDetail = () => {
             <Text>We have {product.stock} units of this product</Text>
 
           </View>
-          <TouchableOpacity style={styles.button} onPress={() => { onAddItem(product) }}>
+          <TouchableOpacity style={styles.button} onPress={() => { handleAddItem() }}>
             <Text style={{ alignSelf: "center", fontSize: 18 }}>Add to your cart</Text>
           </TouchableOpacity>
         </View>
@@ -34,7 +39,7 @@ const ProductDetail = () => {
   }
   return (
     <View style={{ flex: 1, backgroundColor: "#173B48", marginTop: StatusBar.currentHeight }}>
-      <NavBar title={product.title} />
+      <NavBar title={product.title} back={true} />
       <Carousel style={styles.carouselStyles} showsControls={false} autoplay={true} autoplayInterval={2000} loop mergeStyles={true} >
         {product.images.map(img => <Image source={{ uri: img }} style={styles.imageStyles} resizeMode="stretch" />)}
       </Carousel>

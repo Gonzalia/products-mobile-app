@@ -9,10 +9,10 @@ const NavBar = ({ title, back }) => {
     <View style={styles.navBarContainer}>
       {back && (
         <TouchableOpacity onPress={() => navigation.navigate("SplashScreen")}>
-          <Icon name="keyboard-backspace" color={"#fff"} style={{}} size={30} />
+          <Icon name="keyboard-backspace" color={"#fff"} size={30} />
         </TouchableOpacity>
       )}
-      <Text style={styles.navBarText}>{title} </Text>
+      <Text style={[styles.navBarText, back && { textAlign: "right" }]}>{title} </Text>
     </View>
   )
 }
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     alignSelf: "center",
     fontSize: 24,
-    color: "#fff"
+    color: "#fff",
+    flex: 1
   }
 })
 
